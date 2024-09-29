@@ -1,0 +1,1219 @@
+presets:
+  mx_min_spaced:
+    capx: 15.5
+    capy: 15.5
+    capthumbx: 17.8
+    capthumby: 16.5
+    kx: 18 # jcmkk3 uses 16.5. 18 for choc x spacing
+    ky: 16.5
+    kcx: kx # spacing for custom thumb keycaps
+    kcy: ky # spacing for custom thumb keycaps
+    inner_spread: 0.9kx
+    pinky_splay: 5
+    ring_splay: 3
+    thumb_offsetx: 0.75kx
+    switch_xy: 14
+
+  mx_spaced: # y -0.5mm
+    capx: 17.85
+    capy: 18
+    capthumbx: 17.95
+    capthumby: 18.35
+    capleverx: 15.85
+    caplevery: 16.8
+    kx: 19
+    ky: 18.5
+    inner_spread: kx-0.5
+    pinky_splay: 5
+    ring_splay: 2.5
+    thumb_offsetx: 0.25kx
+    switch_xy_mx: 14 # switch hole
+    switch_xy_choc: 13.8
+
+units:
+  $extends: presets.mx_spaced
+  angle: 22 # was 27.5
+  # sf: 19.151 # may want to change this for fab
+  sf: 20
+  ## nice!nano dimensions (from Nicell himself)
+  # mcux: 18
+  # mcuy: 33.4
+  ## supermini dimensions
+  # mcux: 18.1 # with 0.1mm tolerance for fr4 variance
+  # mcuy: 33.85 # length from usb to end of pcb
+  ## promicro footprint dimensions
+  mcux: 17.78
+  mcuy: 33.02 # board only, no usb
+  # netdot usb adapter dimensions
+  ndx: 12 # actual is ~10.82 at widest section
+  ndy: 6 # actual is 5.4 while plugged in
+  # space between keycap and case wall
+  wallx: 1.25
+  wally: 1.1
+
+  # joycon battery dimensions plus tolerance
+  # bcx: 24.5+0.7
+  # bcy: 52+0.7
+
+  # 301230 battery dimensions
+  bcx: 31.5+0.8
+  bcy: 12.5+0.8
+
+  # screw hole diameter (M2)
+  scd: 2.2
+  # screw head diameter ~3.3
+  # heatset hole diameter for 3.2 OD inserts
+  heatset: 3
+  # screw hole diameter for case bottom
+  scb: 2.45
+
+points:
+  zones:
+    matrix:
+      anchor:
+        # Fix placement on KiCAD sheet.
+        shift: [100, -100]
+        rotate: pinky_splay + ring_splay
+      key:
+        width: capx
+        height: capy
+        padding: ky
+        spread: kx
+        autobind: 0
+      columns:
+        pinky:
+          rows:
+            top:
+              bind: [4, 0.5kx, 0.5ky, 0]
+            home:
+              bind: [0, 0.5kx, 0, 0]
+            bottom:
+              bind: [0, 0, 0, 0]
+          key:
+            column_net: C0
+            tags: hotswap
+        ring:
+          rows:
+            top:
+              bind: [0, 0.5kx, 0.5ky, 0]
+            home:
+              bind: [0.5ky, 0.5kx, 0, 0]
+            bottom:
+              bind: [0.5ky, 0, 0, 0.5kx]
+          key:
+            column_net: C1
+            stagger: 10 # was 10
+            spread: kx+1
+            splay: -pinky_splay
+            origin: [0, -3]
+            tags: hotswap
+        middle:
+          rows:
+            home:
+              bind: [0.5ky, 0.5kx, 0, 0]
+            bottom:
+              bind: [0.5ky, 0.5kx, 0.5ky, 0.5kx]
+          key:
+            column_net: C2
+            stagger: 3 # was 2
+            spread: kx+1
+            splay: -ring_splay
+            tags: hotswap
+        index:
+          rows:
+            top:
+              bind: [0, 0, 0, 0]
+            home:
+              bind: [0.5ky, 0.5kx, 0, 0]
+            bottom:
+              bind: [0.5ky, 0.5kx, 0, 0]
+          key:
+            column_net: C3
+            stagger: -2
+            tags: hotswap
+        inner:
+          rows:
+            top:
+              bind: [0, 5, 0, 0.5kx]
+            home:
+              bind: [0.5ky, 5, 0, 0]
+            bottom:
+              bind: [0.5ky, 5, 0.5ky, 0]
+              tags: hotswap
+          key:
+            column_net: C4
+            spread: inner_spread
+            stagger: -2
+      rows:
+        bottom:
+          row_net: R2
+        home:
+          row_net: R1
+        top:
+          row_net: R0
+    thumb:
+      anchor:
+        ref: matrix_index_bottom
+        shift: [thumb_offsetx-4.82+3, -30.1+3]
+      key:
+        width: capx
+        height: capy
+        padding: ky
+        spread: kx+0.7
+        autobind: 0
+      columns:
+        flexion:
+          rows:
+            cluster:
+              bind: [0.5ky, 0, 0, 0]
+          key:
+            splay: -20
+            orient: 47.5
+            shift: [152.1536-148.8676+2.5, -(139.4486-142.9557)] # x was +1.6
+            rotate: -46
+            column_net: C2
+        base:
+          rows:
+            cluster:
+              bind: [0, 0, 0, 55]
+          key:
+            splay: 5
+            stagger: 2.5+4
+            spread: cx+2.5
+            column_net: C3
+            adjust:
+              orient: angle - pinky_splay - ring_splay + 20 + 3
+              shift: [0.887, -0.4617]
+              rotate: -angle + pinky_splay + ring_splay - 20 - 3
+        extension:
+          rows:
+            cluster:
+              bind: [4.174, 0, 0, 85]
+          key:
+            column_net: C4
+            stagger: -4
+      rows:
+        cluster:
+          row_net: R3
+    ref_polygon:
+      anchor:
+    ref_mcu:
+      anchor:
+        ref: matrix_inner_top
+        shift: [0, -6.51]
+    ref_mcu_text:
+      anchor:
+        ref: matrix_inner_top
+        shift: [-5, 6.1]
+    ref_reset:
+      anchor:
+        ref: matrix_middle_bottom
+        shift: [2.75, -31.167]
+    ref_power:
+      anchor:
+        ref: matrix_inner_top
+        shift: [13.274, 0]
+    ref_power_text:
+      anchor:
+        ref: matrix_inner_top
+        shift: [10.6, 4.1]
+    ref_battery_pads:
+      anchor:
+        ref: matrix_middle_bottom
+        shift: [0, -12.36]
+    ref_battery_icon:
+      anchor:
+        ref: matrix_middle_bottom
+        shift: [-0.101, -10.05]
+    ref_jlc_text:
+      anchor:
+        ref: matrix_pinky_top
+        # jlc text is off center because the order# is longer than JLCJLCJLCJLC
+        # hide under switch if you want it less likely to be seen
+        shift: [-1.5, -0.19ky]
+
+    screw_top_left:
+      anchor:
+        ref: matrix_ring_top
+        shift: [-13.1, 1.5]
+      # key.tags: screw_hole
+    screw_top_right:
+      anchor:
+        ref: matrix_inner_top
+        shift: [13, 8]
+    screw_bottom_left:
+      anchor:
+        ref: matrix_pinky_bottom
+        shift: [13.5, -3]
+    screw_bottom_middle:
+      anchor:
+        ref: thumb_flexion_cluster
+        shift: [-10.5, -13.5]
+    screw_bottom_right:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [13, -10]
+
+  mirror: 
+    ref: matrix_inner_top
+    distance: 80
+  
+
+outlines:
+  # !!!add fillets at the very end!!! or you will get malformed outline (self-intersecting) errors in kicad
+  _key_outline_left:
+    - what: rectangle
+      bound: true
+      size: sf
+      where: [/^matrix_.*/, /^thumb_.*/]
+    - what: circle
+      radius: 0.5scd
+      where: screw_top_right
+      operation: subtract
+  _key_outline_right:
+    - what: rectangle
+      bound: true
+      size: sf
+      where: [/^mirror_matrix_.*/, /^mirror_thumb_.*/]
+    - what: circle
+      radius: 0.5scd
+      where: mirror_screw_top_right
+      operation: subtract
+  key_walls:
+    - what: rectangle
+      bound: false
+      size: [capx+2wallx, capy+2wally]
+      where: /^matrix_.*/
+    - what: rectangle # helpers to fill in gaps
+      bound: false
+      where: [matrix_pinky_top, matrix_ring_top]
+      size: [capx+2wallx, 2capy+2wally]
+      adjust.shift: [4, -0.5capy]
+    - what: rectangle
+      bound: false
+      size: [switch_xy_choc+(2*3.025), switch_xy_choc+(2*3.3)]
+      where: thumb_flexion_cluster
+    - what: rectangle # helpers to fill in gaps
+      bound: false
+      where: [thumb_flexion_cluster]
+      size: [switch_xy_choc+(2*3.025)+2, switch_xy_choc+(2*3.3)+10]
+      adjust.shift: [2, 5]
+  _debug_ref_mcu:
+    - what: circle
+      where: ref_mcu
+      radius: .5
+  switch_cutouts:
+    - what: rectangle
+      where: [/^matrix_.*/, thumb_base_cluster, thumb_extension_cluster]
+      size: switch_xy_mx
+    - what: rectangle
+      where: [matrix_inner_top, matrix_inner_home]
+      size: 15.2
+    - what: rectangle
+      where: [thumb_flexion_cluster]
+      size: switch_xy_choc
+  # _hotswap_cutouts: # comment out to speed up eeneration. 489 lines
+  #   - what: polygon
+  #     where: [/matrix/, /thumb/]
+  #     operation: stack
+  #     points:
+  #       - ref: ref_polygon
+  #         shift: [6.569724, 0.951598]
+  #       - ref: ref_polygon
+  #         shift: [6.63375, 0.956362]
+  #       - ref: ref_polygon
+  #         shift: [6.697232, 0.964247]
+  #       - ref: ref_polygon
+  #         shift: [6.760063, 0.97521]
+  #       - ref: ref_polygon
+  #         shift: [6.822137, 0.989207]
+  #       - ref: ref_polygon
+  #         shift: [6.883347, 1.006193]
+  #       - ref: ref_polygon
+  #         shift: [6.943587, 1.026124]
+  #       - ref: ref_polygon
+  #         shift: [7.00275, 1.048957]
+  #       - ref: ref_polygon
+  #         shift: [7.060729, 1.074646]
+  #       - ref: ref_polygon
+  #         shift: [7.117419, 1.103149]
+  #       - ref: ref_polygon
+  #         shift: [7.172712, 1.13442]
+  #       - ref: ref_polygon
+  #         shift: [7.226502, 1.168415]
+  #       - ref: ref_polygon
+  #         shift: [7.278682, 1.205092]
+  #       - ref: ref_polygon
+  #         shift: [7.329146, 1.244404]
+  #       - ref: ref_polygon
+  #         shift: [7.377788, 1.286309]
+  #       - ref: ref_polygon
+  #         shift: [7.4245, 1.330761]
+  #       - ref: ref_polygon
+  #         shift: [7.468953, 1.377474]
+  #       - ref: ref_polygon
+  #         shift: [7.510857, 1.426115]
+  #       - ref: ref_polygon
+  #         shift: [7.55017, 1.476579]
+  #       - ref: ref_polygon
+  #         shift: [7.586846, 1.52876]
+  #       - ref: ref_polygon
+  #         shift: [7.620842, 1.58255]
+  #       - ref: ref_polygon
+  #         shift: [7.652113, 1.637843]
+  #       - ref: ref_polygon
+  #         shift: [7.680615, 1.694532]
+  #       - ref: ref_polygon
+  #         shift: [7.706304, 1.752512]
+  #       - ref: ref_polygon
+  #         shift: [7.729137, 1.811675]
+  #       - ref: ref_polygon
+  #         shift: [7.749068, 1.871914]
+  #       - ref: ref_polygon
+  #         shift: [7.766054, 1.933124]
+  #       - ref: ref_polygon
+  #         shift: [7.780051, 1.995198]
+  #       - ref: ref_polygon
+  #         shift: [7.791014, 2.058029]
+  #       - ref: ref_polygon
+  #         shift: [7.7989, 2.121511]
+  #       - ref: ref_polygon
+  #         shift: [7.803663, 2.185537]
+  #       - ref: ref_polygon
+  #         shift: [7.805261, 2.25]
+  #       - ref: ref_polygon
+  #         shift: [7.805261, 2.4]
+  #       - ref: ref_polygon
+  #         shift: [9.455261, 2.4]
+  #       - ref: ref_polygon
+  #         shift: [9.455261, 5.1]
+  #       - ref: ref_polygon
+  #         shift: [7.805261, 5.1]
+  #       - ref: ref_polygon
+  #         shift: [7.805261, 5.25]
+  #       - ref: ref_polygon
+  #         shift: [7.803663, 5.314463]
+  #       - ref: ref_polygon
+  #         shift: [7.7989, 5.378489]
+  #       - ref: ref_polygon
+  #         shift: [7.791014, 5.441971]
+  #       - ref: ref_polygon
+  #         shift: [7.780051, 5.504802]
+  #       - ref: ref_polygon
+  #         shift: [7.766054, 5.566876]
+  #       - ref: ref_polygon
+  #         shift: [7.749068, 5.628086]
+  #       - ref: ref_polygon
+  #         shift: [7.729137, 5.688326]
+  #       - ref: ref_polygon
+  #         shift: [7.706304, 5.747488]
+  #       - ref: ref_polygon
+  #         shift: [7.680615, 5.805468]
+  #       - ref: ref_polygon
+  #         shift: [7.652113, 5.862157]
+  #       - ref: ref_polygon
+  #         shift: [7.620842, 5.91745]
+  #       - ref: ref_polygon
+  #         shift: [7.586846, 5.97124]
+  #       - ref: ref_polygon
+  #         shift: [7.55017, 6.023421]
+  #       - ref: ref_polygon
+  #         shift: [7.510857, 6.073885]
+  #       - ref: ref_polygon
+  #         shift: [7.468953, 6.122526]
+  #       - ref: ref_polygon
+  #         shift: [7.4245, 6.169238]
+  #       - ref: ref_polygon
+  #         shift: [7.377788, 6.213691]
+  #       - ref: ref_polygon
+  #         shift: [7.329146, 6.255596]
+  #       - ref: ref_polygon
+  #         shift: [7.278682, 6.294908]
+  #       - ref: ref_polygon
+  #         shift: [7.226502, 6.331584]
+  #       - ref: ref_polygon
+  #         shift: [7.172712, 6.36558]
+  #       - ref: ref_polygon
+  #         shift: [7.117419, 6.396851]
+  #       - ref: ref_polygon
+  #         shift: [7.060729, 6.425353]
+  #       - ref: ref_polygon
+  #         shift: [7.00275, 6.451043]
+  #       - ref: ref_polygon
+  #         shift: [6.943587, 6.473875]
+  #       - ref: ref_polygon
+  #         shift: [6.883347, 6.493807]
+  #       - ref: ref_polygon
+  #         shift: [6.822137, 6.510793]
+  #       - ref: ref_polygon
+  #         shift: [6.760063, 6.524789]
+  #       - ref: ref_polygon
+  #         shift: [6.697232, 6.535753]
+  #       - ref: ref_polygon
+  #         shift: [6.63375, 6.543638]
+  #       - ref: ref_polygon
+  #         shift: [6.569724, 6.548402]
+  #       - ref: ref_polygon
+  #         shift: [6.505261, 6.549999]
+  #       - ref: ref_polygon
+  #         shift: [3.605262, 6.549999]
+  #       - ref: ref_polygon
+  #         shift: [3.571855, 6.550781]
+  #       - ref: ref_polygon
+  #         shift: [3.538819, 6.553105]
+  #       - ref: ref_polygon
+  #         shift: [3.506191, 6.556936]
+  #       - ref: ref_polygon
+  #         shift: [3.474009, 6.562243]
+  #       - ref: ref_polygon
+  #         shift: [3.442311, 6.568991]
+  #       - ref: ref_polygon
+  #         shift: [3.411133, 6.577148]
+  #       - ref: ref_polygon
+  #         shift: [3.380512, 6.58668]
+  #       - ref: ref_polygon
+  #         shift: [3.350486, 6.597554]
+  #       - ref: ref_polygon
+  #         shift: [3.321093, 6.609736]
+  #       - ref: ref_polygon
+  #         shift: [3.292369, 6.623194]
+  #       - ref: ref_polygon
+  #         shift: [3.264352, 6.637895]
+  #       - ref: ref_polygon
+  #         shift: [3.237079, 6.653804]
+  #       - ref: ref_polygon
+  #         shift: [3.210587, 6.670889]
+  #       - ref: ref_polygon
+  #         shift: [3.184914, 6.689116]
+  #       - ref: ref_polygon
+  #         shift: [3.160097, 6.708453]
+  #       - ref: ref_polygon
+  #         shift: [3.136173, 6.728865]
+  #       - ref: ref_polygon
+  #         shift: [3.113179, 6.75032]
+  #       - ref: ref_polygon
+  #         shift: [3.091153, 6.772784]
+  #       - ref: ref_polygon
+  #         shift: [3.070131, 6.796225]
+  #       - ref: ref_polygon
+  #         shift: [3.050152, 6.820608]
+  #       - ref: ref_polygon
+  #         shift: [3.031253, 6.845901]
+  #       - ref: ref_polygon
+  #         shift: [3.01347, 6.87207]
+  #       - ref: ref_polygon
+  #         shift: [2.996841, 6.899082]
+  #       - ref: ref_polygon
+  #         shift: [2.981404, 6.926904]
+  #       - ref: ref_polygon
+  #         shift: [2.967195, 6.955503]
+  #       - ref: ref_polygon
+  #         shift: [2.954251, 6.984845]
+  #       - ref: ref_polygon
+  #         shift: [2.942611, 7.014897]
+  #       - ref: ref_polygon
+  #         shift: [2.932312, 7.045626]
+  #       - ref: ref_polygon
+  #         shift: [2.92339, 7.076998]
+  #       - ref: ref_polygon
+  #         shift: [2.915882, 7.108981]
+  #       - ref: ref_polygon
+  #         shift: [2.909827, 7.14154]
+  #       - ref: ref_polygon
+  #         shift: [2.905262, 7.174644]
+  #       - ref: ref_polygon
+  #         shift: [2.905262, 7.325735]
+  #       - ref: ref_polygon
+  #         shift: [2.904279, 7.365405]
+  #       - ref: ref_polygon
+  #         shift: [2.901347, 7.404806]
+  #       - ref: ref_polygon
+  #         shift: [2.896495, 7.443871]
+  #       - ref: ref_polygon
+  #         shift: [2.889748, 7.482537]
+  #       - ref: ref_polygon
+  #         shift: [2.881135, 7.520736]
+  #       - ref: ref_polygon
+  #         shift: [2.870682, 7.558404]
+  #       - ref: ref_polygon
+  #         shift: [2.858416, 7.595474]
+  #       - ref: ref_polygon
+  #         shift: [2.844366, 7.631882]
+  #       - ref: ref_polygon
+  #         shift: [2.828557, 7.667562]
+  #       - ref: ref_polygon
+  #         shift: [2.811017, 7.702448]
+  #       - ref: ref_polygon
+  #         shift: [2.791773, 7.736474]
+  #       - ref: ref_polygon
+  #         shift: [2.770853, 7.769576]
+  #       - ref: ref_polygon
+  #         shift: [2.748283, 7.801687]
+  #       - ref: ref_polygon
+  #         shift: [2.724091, 7.832742]
+  #       - ref: ref_polygon
+  #         shift: [2.698303, 7.862675]
+  #       - ref: ref_polygon
+  #         shift: [2.670948, 7.891421]
+  #       - ref: ref_polygon
+  #         shift: [1.996682, 8.565685]
+  #       - ref: ref_polygon
+  #         shift: [1.967936, 8.59304]
+  #       - ref: ref_polygon
+  #         shift: [1.938003, 8.618827]
+  #       - ref: ref_polygon
+  #         shift: [1.906948, 8.64302]
+  #       - ref: ref_polygon
+  #         shift: [1.874837, 8.66559]
+  #       - ref: ref_polygon
+  #         shift: [1.841736, 8.68651]
+  #       - ref: ref_polygon
+  #         shift: [1.807709, 8.705754]
+  #       - ref: ref_polygon
+  #         shift: [1.772824, 8.723294]
+  #       - ref: ref_polygon
+  #         shift: [1.737144, 8.739103]
+  #       - ref: ref_polygon
+  #         shift: [1.700736, 8.753153]
+  #       - ref: ref_polygon
+  #         shift: [1.663665, 8.765419]
+  #       - ref: ref_polygon
+  #         shift: [1.625998, 8.775872]
+  #       - ref: ref_polygon
+  #         shift: [1.587798, 8.784485]
+  #       - ref: ref_polygon
+  #         shift: [1.549133, 8.791232]
+  #       - ref: ref_polygon
+  #         shift: [1.510068, 8.796084]
+  #       - ref: ref_polygon
+  #         shift: [1.470667, 8.799016]
+  #       - ref: ref_polygon
+  #         shift: [1.430998, 8.799999]
+  #       - ref: ref_polygon
+  #         shift: [-1.320473, 8.799999]
+  #       - ref: ref_polygon
+  #         shift: [-1.360142, 8.799016]
+  #       - ref: ref_polygon
+  #         shift: [-1.399543, 8.796084]
+  #       - ref: ref_polygon
+  #         shift: [-1.438608, 8.791232]
+  #       - ref: ref_polygon
+  #         shift: [-1.477274, 8.784485]
+  #       - ref: ref_polygon
+  #         shift: [-1.515473, 8.775872]
+  #       - ref: ref_polygon
+  #         shift: [-1.553141, 8.765419]
+  #       - ref: ref_polygon
+  #         shift: [-1.590211, 8.753153]
+  #       - ref: ref_polygon
+  #         shift: [-1.626619, 8.739102]
+  #       - ref: ref_polygon
+  #         shift: [-1.662299, 8.723293]
+  #       - ref: ref_polygon
+  #         shift: [-1.697185, 8.705754]
+  #       - ref: ref_polygon
+  #         shift: [-1.731212, 8.68651]
+  #       - ref: ref_polygon
+  #         shift: [-1.764313, 8.665589]
+  #       - ref: ref_polygon
+  #         shift: [-1.796424, 8.643019]
+  #       - ref: ref_polygon
+  #         shift: [-1.827479, 8.618827]
+  #       - ref: ref_polygon
+  #         shift: [-1.857413, 8.59304]
+  #       - ref: ref_polygon
+  #         shift: [-1.886159, 8.565684]
+  #       - ref: ref_polygon
+  #         shift: [-2.560423, 7.891421]
+  #       - ref: ref_polygon
+  #         shift: [-2.587778, 7.862675]
+  #       - ref: ref_polygon
+  #         shift: [-2.613566, 7.832741]
+  #       - ref: ref_polygon
+  #         shift: [-2.637758, 7.801686]
+  #       - ref: ref_polygon
+  #         shift: [-2.660328, 7.769575]
+  #       - ref: ref_polygon
+  #         shift: [-2.681248, 7.736474]
+  #       - ref: ref_polygon
+  #         shift: [-2.700492, 7.702447]
+  #       - ref: ref_polygon
+  #         shift: [-2.718032, 7.667561]
+  #       - ref: ref_polygon
+  #         shift: [-2.733841, 7.631881]
+  #       - ref: ref_polygon
+  #         shift: [-2.747892, 7.595474]
+  #       - ref: ref_polygon
+  #         shift: [-2.760157, 7.558403]
+  #       - ref: ref_polygon
+  #         shift: [-2.77061, 7.520735]
+  #       - ref: ref_polygon
+  #         shift: [-2.779223, 7.482536]
+  #       - ref: ref_polygon
+  #         shift: [-2.78597, 7.443871]
+  #       - ref: ref_polygon
+  #         shift: [-2.790823, 7.404805]
+  #       - ref: ref_polygon
+  #         shift: [-2.793754, 7.365405]
+  #       - ref: ref_polygon
+  #         shift: [-2.794738, 7.325735]
+  #       - ref: ref_polygon
+  #         shift: [-2.794738, 7.299999]
+  #       - ref: ref_polygon
+  #         shift: [-4.444737, 7.299999]
+  #       - ref: ref_polygon
+  #         shift: [-4.444737, 4.6]
+  #       - ref: ref_polygon
+  #         shift: [-2.794738, 4.6]
+  #       - ref: ref_polygon
+  #         shift: [-2.794737, 4.574264]
+  #       - ref: ref_polygon
+  #         shift: [-2.793754, 4.534595]
+  #       - ref: ref_polygon
+  #         shift: [-2.790822, 4.495194]
+  #       - ref: ref_polygon
+  #         shift: [-2.78597, 4.456128]
+  #       - ref: ref_polygon
+  #         shift: [-2.779223, 4.417463]
+  #       - ref: ref_polygon
+  #         shift: [-2.77061, 4.379264]
+  #       - ref: ref_polygon
+  #         shift: [-2.760157, 4.341596]
+  #       - ref: ref_polygon
+  #         shift: [-2.747891, 4.304526]
+  #       - ref: ref_polygon
+  #         shift: [-2.733841, 4.268118]
+  #       - ref: ref_polygon
+  #         shift: [-2.718032, 4.232438]
+  #       - ref: ref_polygon
+  #         shift: [-2.700492, 4.197552]
+  #       - ref: ref_polygon
+  #         shift: [-2.681248, 4.163526]
+  #       - ref: ref_polygon
+  #         shift: [-2.660328, 4.130424]
+  #       - ref: ref_polygon
+  #         shift: [-2.637758, 4.098313]
+  #       - ref: ref_polygon
+  #         shift: [-2.613566, 4.067258]
+  #       - ref: ref_polygon
+  #         shift: [-2.587778, 4.037325]
+  #       - ref: ref_polygon
+  #         shift: [-2.560423, 4.008579]
+  #       - ref: ref_polygon
+  #         shift: [-1.886159, 3.334315]
+  #       - ref: ref_polygon
+  #         shift: [-1.857413, 3.306959]
+  #       - ref: ref_polygon
+  #         shift: [-1.82748, 3.281172]
+  #       - ref: ref_polygon
+  #         shift: [-1.796425, 3.256979]
+  #       - ref: ref_polygon
+  #         shift: [-1.764314, 3.234409]
+  #       - ref: ref_polygon
+  #         shift: [-1.731212, 3.213489]
+  #       - ref: ref_polygon
+  #         shift: [-1.697186, 3.194245]
+  #       - ref: ref_polygon
+  #         shift: [-1.6623, 3.176705]
+  #       - ref: ref_polygon
+  #         shift: [-1.62662, 3.160896]
+  #       - ref: ref_polygon
+  #         shift: [-1.590212, 3.146846]
+  #       - ref: ref_polygon
+  #         shift: [-1.553141, 3.13458]
+  #       - ref: ref_polygon
+  #         shift: [-1.515474, 3.124127]
+  #       - ref: ref_polygon
+  #         shift: [-1.477274, 3.115514]
+  #       - ref: ref_polygon
+  #         shift: [-1.438609, 3.108767]
+  #       - ref: ref_polygon
+  #         shift: [-1.399544, 3.103915]
+  #       - ref: ref_polygon
+  #         shift: [-1.360143, 3.100983]
+  #       - ref: ref_polygon
+  #         shift: [-1.320474, 3.1]
+  #       - ref: ref_polygon
+  #         shift: [0.514954, 3.1]
+  #       - ref: ref_polygon
+  #         shift: [0.624657, 3.07693]
+  #       - ref: ref_polygon
+  #         shift: [0.731567, 3.046584]
+  #       - ref: ref_polygon
+  #         shift: [0.835397, 3.009215]
+  #       - ref: ref_polygon
+  #         shift: [0.935856, 2.965075]
+  #       - ref: ref_polygon
+  #         shift: [1.032655, 2.914418]
+  #       - ref: ref_polygon
+  #         shift: [1.125505, 2.857496]
+  #       - ref: ref_polygon
+  #         shift: [1.214118, 2.794563]
+  #       - ref: ref_polygon
+  #         shift: [1.298203, 2.725871]
+  #       - ref: ref_polygon
+  #         shift: [1.377473, 2.651673]
+  #       - ref: ref_polygon
+  #         shift: [1.451637, 2.572223]
+  #       - ref: ref_polygon
+  #         shift: [1.520407, 2.487772]
+  #       - ref: ref_polygon
+  #         shift: [1.583493, 2.398574]
+  #       - ref: ref_polygon
+  #         shift: [1.640608, 2.304881]
+  #       - ref: ref_polygon
+  #         shift: [1.69146, 2.206947]
+  #       - ref: ref_polygon
+  #         shift: [1.735762, 2.105025]
+  #       - ref: ref_polygon
+  #         shift: [1.773224, 1.999367]
+  #       - ref: ref_polygon
+  #         shift: [1.814634, 1.884636]
+  #       - ref: ref_polygon
+  #         shift: [1.864553, 1.774921]
+  #       - ref: ref_polygon
+  #         shift: [1.92253, 1.670553]
+  #       - ref: ref_polygon
+  #         shift: [1.988117, 1.571861]
+  #       - ref: ref_polygon
+  #         shift: [2.060865, 1.479172]
+  #       - ref: ref_polygon
+  #         shift: [2.140324, 1.392817]
+  #       - ref: ref_polygon
+  #         shift: [2.226046, 1.313124]
+  #       - ref: ref_polygon
+  #         shift: [2.317582, 1.240423]
+  #       - ref: ref_polygon
+  #         shift: [2.414482, 1.175043]
+  #       - ref: ref_polygon
+  #         shift: [2.516297, 1.117312]
+  #       - ref: ref_polygon
+  #         shift: [2.622578, 1.06756]
+  #       - ref: ref_polygon
+  #         shift: [2.732877, 1.026116]
+  #       - ref: ref_polygon
+  #         shift: [2.846744, 0.993309]
+  #       - ref: ref_polygon
+  #         shift: [2.963729, 0.969468]
+  #       - ref: ref_polygon
+  #         shift: [3.083385, 0.954922]
+  #       - ref: ref_polygon
+  #         shift: [3.205262, 0.95]
+  #       - ref: ref_polygon
+  #         shift: [6.505261, 0.95]
+  _mcu_cutout:
+    - what: rectangle
+      where: ref_mcu
+      size: [mcux+2, mcuy+2]
+  _battery_cutout:
+    - what: rectangle
+      where: matrix_middle_bottom
+      size: [bcx, bcy]
+      adjust:
+        shift: [-3.61, -20.927+0.25]
+        rotate: 2.5
+  _battery_pads_cutout:
+    - what: rectangle
+      where: ref_battery_pads
+      adjust:
+        rotate: 2.5
+      size: [5.25, 3]
+  _switch_power_cutout:
+    - what: rectangle
+      where: matrix_inner_top
+      adjust:
+        shift: [13.275, 0]
+        rotate: 90
+      size: [8.8+0.5, 5.6]
+  _switch_reset_cutout:
+    - what: rectangle
+      where: ref_reset
+      adjust:
+          shift: [0, -0.45-0.525]
+          orient: -15
+      size: [9.1, 7]
+  case_top_cutouts:
+    - name: _mcu_cutout
+    - name: _battery_cutout
+    - name: _battery_pads_cutout
+    - name: _switch_power_cutout
+    - name: _switch_reset_cutout
+    - what: circle
+      where: /screw_/
+      radius: 0.5heatset
+      operation: subtract
+  keycaps:
+    - what: rectangle
+      where:
+        - /matrix_.*/
+      size: [capx, capy]
+    - what: rectangle
+      where: [thumb_base_cluster, thumb_extension_cluster]
+      size: [capthumbx, capthumby]
+    - what: rectangle
+      where: [thumb_flexion_cluster]
+      size: [capleverx, caplevery]
+  pcb_left:
+    - name: _key_outline_left
+    # - name: key_walls # for debugging
+    #   operation: stack # for debugging
+    # - name: case_top_cutouts # for debugging
+    #   operation: stack # for debugging
+    # - name: switch_cutouts
+    #   operation: stack # for debugging
+    # - name: _debug_ref_mcu
+    #   operation: stack
+  pcb_right:
+    - name: _key_outline_right
+  screws:
+    - what: circle
+      where: /screw_/
+      radius: 0.5scd
+  _lofree_center_pin_cutouts:
+    - what: circle # cutout for lofree central pin (center pin)
+      where: [/matrix_.*/, /thumb_.*/]
+      radius: (4.8/2)+0.4
+  _choc_v1_and_v2_compatible_cutouts:
+    - what: circle # cutout for lofree central pin
+      where: [/matrix_.*/, /thumb_.*/]
+      radius: (4.8/2)+0.4
+    - what: circle # cutout for choc v1 stab pins
+      where: [/matrix_.*/, /thumb_.*/]
+      adjust.shift: [5.5, 0]
+      radius: 1
+    - what: circle # cutout for choc v1 stab pins
+      where: [/matrix_.*/, /thumb_.*/]
+      adjust.shift: [-5.5, 0]
+      radius: 1
+  case_bottom_left: 
+    - name: pcb_left
+    - name: _mcu_cutout
+      operation: subtract
+    - name: _choc_v1_and_v2_compatible_cutouts
+      operation: subtract
+    # - name: _hotswap_cutouts # comment out to speed up outline gen.
+    #   operation: subtract
+    - what: circle
+      where: /screw_/
+      radius: 0.5scb
+      operation: subtract
+  case_bottom_right: 
+    - name: pcb_right
+    - name: _choc_v1_and_v2_compatible_cutouts
+    # - name: _hotswap_cutouts # comment out to speed up outline gen.
+    #   operation: subtract
+  # preview:
+  #   - name: pcb_left
+  #   - name: keycaps
+  #     operation: stack
+pcbs:
+  Left: # name must be capitalized or bugs!
+    outlines:
+      main:
+        outline: pcb_left
+    footprints:
+      mcu:
+        what: mcu_nice_nano
+        where: ref_mcu
+        adjust:
+          rotate: 0
+        params:
+          side: F
+          reversible: false
+          reverse_mount: true
+          show_silk_labels: false
+
+          P21: C0
+          P20: C1
+          P19: C2
+          P18: C3
+          P15: C4
+          P14: R0
+          P16: R1
+          P10: R2
+
+          P9: R3
+      mcu_text:
+        what: infused-kim/text
+        where: ref_mcu_text
+        params:
+          side: B
+          text: 'RAW'
+          reverse: false
+        adjust:
+      switches_hotswap:
+        what: switch_choc_v1_v2 # edited version of footprint, added keycaps_x/y params
+        where: 
+          - /^thumb_./
+          - /^matrix_pinky./
+          - /^matrix_ring./
+          - /^matrix_middle./
+          - /^matrix_index./
+          - matrix_inner_bottom
+        params:
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+          reversible: false
+          hotswap: true
+          # solder: true
+          outer_pad_width_back: 2.4
+          outer_pad_width_front: 2.4
+          include_stabilizer_pad: false
+          # show_corner_marks: true
+          # show_keycaps: true
+          keycaps_x: capx
+          keycaps_y: capy
+      switches_solder:
+        what: switch_choc_v1_v2 # edited version of footprint, added keycaps_x/y params
+        where: [matrix_inner_top, matrix_inner_home]
+        params:
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+          reversible: false
+          hotswap: false
+          solder: true
+          include_stabilizer_pad: false
+          # show_corner_marks: true
+          # show_keycaps: true
+          keycaps_x: capx
+          keycaps_y: capy
+      diodes:
+        what: combo_diode
+        where: [/^matrix_.*/, /^thumb_.*/]
+        params:
+          side: F
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+          include_tht: false
+        adjust:
+          shift: [0, -5]
+          resist: true
+      switch_power:
+        what: infused-kim/switch_power
+        where: ref_power
+        adjust:
+          rotate: 0
+        params: 
+          reverse: false
+          side: F
+          from: RAW
+          to: BAT_P
+      switch_power_text:
+        what: infused-kim/text
+        where: ref_power_text
+        params:
+          text: "ON"
+          side: F
+          reverse: false
+        adjust:
+          rotate: -90
+      switch_reset:
+        what: SKHLLCA010
+        where: ref_reset
+        adjust:
+          rotate: 180-15
+      # battery_connector:
+      #   what: infused-kim/conn_molex_pico_ezmate_1x02
+      #   where: battery
+      #   adjust: 
+      #     shift: [11, -17]
+      #     rotate: -9
+      #   params:
+      #     reverse: true
+      #     pad_1: BAT_P
+      #     pad_2: GND
+      battery_pads: # use pads instead of through holes. supposedly less chance of a wire breaking
+        what: infused-kim/pads
+        where: ref_battery_pads
+        adjust:
+          rotate: 2.5
+        params:
+          reverse: false
+          space: 2.
+          net_1: BAT_P
+          net_2: GND
+      battery_icon:
+        what: infused-kim/icon_bat
+        where: ref_battery_icon
+        params:
+          reverse: false
+          spacing: 2.2
+        adjust:
+          rotate: 2.5
+      m2_screws:
+        what: infused-kim/mounting_hole
+        # changed courtyard_offset in mounting_hole.js to 0.47
+        # increases outline to m2 screwhead size (diameter ~3.4mm)
+        where: [[/^screw_./, -screw_top_right]]
+        params:
+          drill: scd
+          outline: 0.13
+      jlcpcb_order_number_text:
+        what: infused-kim/text
+        where: ref_jlc_text
+        params:
+          text: JLCJLCJLCJLC
+          reverse: false
+  Right: # name must be capitalized or bugs!
+    outlines:
+      main:
+        outline: pcb_right
+    footprints:
+      mcu:
+        what: mcu_nice_nano
+        where: mirror_ref_mcu
+        adjust:
+          rotate: 0
+        params:
+          side: F
+          reversible: false
+          reverse_mount: true
+          show_silk_labels: false
+
+          P2: C0
+          P3: C1
+          P4: C2
+          P5: C3
+          P6: C4
+          P7: R0
+          P8: R1
+          P9: R2
+          
+          P10: R3
+      mcu_text:
+        what: infused-kim/text
+        where: mirror_ref_mcu_text
+        params:
+          side: B
+          text: 'RAW'
+          reverse: false
+        adjust:
+          shift: [5*2, 0]
+      switches_hotswap:
+        what: switch_choc_v1_v2 # edited version of footprint, added keycaps_x/y params
+        where: 
+          - /^mirror_thumb_./
+          - /^mirror_matrix_pinky./
+          - /^mirror_matrix_ring./
+          - /^mirror_matrix_middle./
+          - /^mirror_matrix_index./
+          - mirror_matrix_inner_bottom
+        params:
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+          reversible: false
+          hotswap: true
+          # solder: true
+          outer_pad_width_back: 2.4
+          outer_pad_width_front: 2.4
+          include_stabilizer_pad: false
+          # show_corner_marks: true
+          # show_keycaps: true
+          keycaps_x: capx
+          keycaps_y: capy
+      switches_solder:
+        what: switch_choc_v1_v2 # edited version of footprint, added keycaps_x/y params
+        where: [mirror_matrix_inner_top, mirror_matrix_inner_home]
+        params:
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+          reversible: false
+          hotswap: false
+          solder: true
+          include_stabilizer_pad: false
+          # show_corner_marks: true
+          # show_keycaps: true
+          keycaps_x: capx
+          keycaps_y: capy
+      diodes:
+        what: combo_diode
+        where: [/^mirror_matrix_./, /^mirror_thumb_./]
+        params:
+          side: F
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+          include_tht: false
+        adjust:
+          shift: [0, -5]
+          resist: true
+      switch_power:
+        what: infused-kim/switch_power
+        where: mirror_ref_power
+        adjust:
+          rotate: 180
+        params: 
+          reverse: false
+          side: F
+          from: RAW
+          to: BAT_P
+      switch_power_text:
+        what: infused-kim/text
+        where: mirror_ref_power_text
+        params:
+          text: "ON"
+          side: F
+          reverse: false
+        adjust:
+          shift: [0, -(4.1*2)]
+          rotate: -90
+      switch_reset:
+        what: SKHLLCA010
+        where: mirror_ref_reset
+        adjust:
+          rotate: 180-15
+      # battery_connector:
+      #   what: infused-kim/conn_molex_pico_ezmate_1x02
+      #   where: mirror_battery
+      #   adjust: 
+      #     shift: [11, -17]
+      #     rotate: -9
+      #   params:
+      #     reverse: true
+      #     pad_1: BAT_P
+      #     pad_2: GND
+      battery_pads: # use pads instead of through holes. supposedly less chance of a wire breaking
+        what: infused-kim/pads
+        where: mirror_ref_battery_pads
+        adjust:
+          rotate: 2.5
+        params:
+          reverse: false
+          space: 2.
+          net_1: BAT_P
+          net_2: GND
+      battery_icon:
+        what: infused-kim/icon_bat
+        where: mirror_ref_battery_icon
+        params:
+          reverse: false
+          spacing: 2.2
+        adjust:
+          rotate: 2.5
+      m2_screws:
+        what: infused-kim/mounting_hole
+        # changed courtyard_offset in mounting_hole.js to 0.47
+        # increases outline to m2 screwhead size (diameter ~3.4mm)
+        where: [[/^mirror_screw_./, -mirror_screw_top_right]]
+        params:
+          drill: scd
+          outline: 0.13
+      jlcpcb_order_number_text:
+        what: infused-kim/text
+        where: mirror_ref_jlc_text
+        params:
+          text: JLCJLCJLCJLC
+          reverse: false
+
+
+  # case_bottom: # use to generate HOTSWAP cutouts for bottom case
+  #   outlines:
+  #     main:
+  #       outline: case_bottom
+  #   footprints:
+  #     hotswap_cutouts:
+  #       what: switch_choc_v1_v2 # placeholder. manually replace in kicad
+  #       where: [/matrix/, /thumb/]
+  #       params:
+  #         from: "{{column_net}}"
+  #         to: "{{colrow}}"
+  #         reversible: false
