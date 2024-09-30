@@ -345,9 +345,6 @@ outlines:
       where: [/^matrix_.*/, thumb_base_cluster, thumb_extension_cluster]
       size: switch_xy_mx
     - what: rectangle
-      where: [matrix_inner_top, matrix_inner_home]
-      size: 15.2
-    - what: rectangle
       where: [thumb_flexion_cluster]
       size: switch_xy_choc
   # _hotswap_cutouts: # comment out to speed up eeneration. 489 lines
