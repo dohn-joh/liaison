@@ -216,16 +216,11 @@ points:
     ref_reset:
       anchor:
         ref: ref_mcu
-        shift: [82.46, 8.858]
+        shift: [24.5, 8.858]
     ref_power:
       anchor:
         ref: ref_mcu
-        shift: [23, 9.483]
-        rotate: 90
-    ref_power_text:
-      anchor:
-        ref: ref_power
-        shift: [-2.5, 3.9]
+        shift: [81.5, 6.]
     ref_battery_connector:
       anchor:
         ref: matrix_ring_bottom
@@ -860,7 +855,15 @@ outlines:
   _switch_power_cutout:
     - what: rectangle
       where: ref_power
-      size: [5.6, 8.8+0.5]
+      size: [12.45, 8.7]
+    - what: rectangle
+      where: ref_power
+      adjust.shift: [-8.5, 0]
+      size: [5.4, 3]
+    - what: rectangle
+      where: ref_power
+      adjust.shift: [8.5, 0]
+      size: [5.4, 3]
   _switch_reset_cutout:
     - what: rectangle
       where: ref_reset
@@ -925,9 +928,13 @@ outlines:
     - name: pcb_left
     - name: _choc_v1_v2_pin_cutouts
       operation: subtract
+    - what: circle # power button cutout
+      where: ref_power
+      radius: 7/2
+      operation: stack
     # - name: _hotswap_cutouts # comment out to speed up outline gen.
     #   operation: subtract
-    - what: circle
+    - what: circle # reset pin cutouts
       where: ref_reset
       radius: 2.5/2
       adjust.shift: [-3.5, -1.25]
@@ -955,9 +962,13 @@ outlines:
     - name: pcb_right
     - name: _choc_v1_v2_pin_cutouts
       operation: subtract
+    - what: circle # power button cutout
+      where: ref_power
+      radius: 7/2
+      operation: stack
     # - name: _hotswap_cutouts # comment out to speed up outline gen.
     #   operation: subtract
-    - what: circle
+    - what: circle # reset pin cutouts
       where: mirror_ref_reset
       radius: 2.5/2
       adjust.shift: [-3.5, -1.25]
@@ -1029,27 +1040,11 @@ pcbs:
           shift: [0, -5]
           resist: true
       switch_power:
-        what: infused-kim/switch_power
+        what: switch_power_1208YD
         where: ref_power
-        params: 
-          reverse: false
-          side: F
-          from: BAT # note that this must connect to BAT pin on xiao mcu. cannot use RAW pin.
-          to: BAT_CONN
-      switch_power_text:
-        what: infused-kim/text
-        where: ref_power_text
-        params:
-          text: "ON"
-          side: F
-          reverse: false
-        adjust:
-          rotate: -90
       switch_reset:
         what: SKHLLCA010
         where: ref_reset
-        adjust:
-          rotate: 0
       battery_connector:
         what: infused-kim/conn_molex_pico_ezmate_1x02
         where: ref_battery_connector
@@ -1125,25 +1120,11 @@ pcbs:
           shift: [0, -5]
           resist: true
       switch_power:
-        what: infused-kim/switch_power
+        what: switch_power_1208YD
         where: mirror_ref_power
-        adjust:
-          rotate: 180
         params: 
-          reverse: false
-          side: F
-          from: BAT # note that this must connect to BAT pin on xiao mcu. cannot use RAW pin.
-          to: BAT_CONN
-      switch_power_text:
-        what: infused-kim/text
-        where: mirror_ref_power_text
-        params:
-          text: "ON"
-          side: F
-          reverse: false
-        adjust:
-          shift: [0, -(4.1*2)]
-          rotate: -90
+          pad1: BAT_CONN
+          pad2: BAT
       switch_reset:
         what: SKHLLCA010
         where: mirror_ref_reset

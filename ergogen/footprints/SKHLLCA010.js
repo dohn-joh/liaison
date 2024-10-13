@@ -5,8 +5,8 @@ module.exports = {
     params: {
         designator: 'S',
         side: 'F',
-        GND: {type: 'net', value: 'GND'},
-        RST: {type: 'net', value: 'RST'},
+        pad1: {type: 'net', value: 'RST'},
+        pad2: {type: 'net', value: 'GND'},
     },
     body: p => `
 
@@ -29,8 +29,8 @@ module.exports = {
   (fp_line (start 3.65 -4.97) (end 3.65 2.18) (layer "F.CrtYd") (width 0.05))
   (fp_line (start -3.65 -4.97) (end -3.65 2.18) (layer "F.CrtYd") (width 0.05))
   (fp_line (start -3.65 2.18) (end 3.65 2.18) (layer "F.CrtYd") (width 0.05))
-  (pad "1" thru_hole circle (at 2.5 -1.25 ${p.rot}) (size 1.8 1.8) (drill 1) (layers *.Cu "B.Mask") ${p.RST.str})
-  (pad "2" thru_hole circle (at -2.5 -1.25 ${p.rot}) (size 1.8 1.8) (drill 1) (layers *.Cu "B.Mask") ${p.GND.str})
+  (pad "1" thru_hole circle (at -2.5 -1.25 ${p.rot}) (size 1.8 1.8) (drill 1) (layers *.Cu "B.Mask") ${p.pad1.str})
+  (pad "2" thru_hole circle (at 2.5 -1.25 ${p.rot}) (size 1.8 1.8) (drill 1) (layers *.Cu "B.Mask") ${p.pad2.str})
   (pad "MP" thru_hole circle (at -3.5 1.25 ${p.rot}) (size 2.1 2.1) (drill 1.3) (layers *.Cu *.Mask))
   (pad "MP" thru_hole circle (at 3.5 1.25 ${p.rot}) (size 2.1 2.1) (drill 1.3) (layers *.Cu *.Mask))
 )

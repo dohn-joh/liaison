@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.0,
-          "height": 1.8,
-          "width": 2.75
+          "drill": 0.762,
+          "height": 1.524,
+          "width": 1.524
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -58,7 +58,10 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "copper_edge_clearance|89015123|40317932|029f6993-f282-4523-8b57-9ae837bc8d1b|63c4f390-345c-42c0-b094-51e78111e0b7",
+        "copper_edge_clearance|92140284|33746493|fe7b226c-4f1a-430d-b211-a55cf497789f|990de089-524f-46d5-aca8-4a7eb4c13115"
+      ],
       "meta": {
         "filename": "board_design_settings.json",
         "version": 2
@@ -67,7 +70,7 @@
         "annular_width": "error",
         "clearance": "error",
         "connection_width": "warning",
-        "copper_edge_clearance": "ignore",
+        "copper_edge_clearance": "error",
         "copper_sliver": "warning",
         "courtyards_overlap": "error",
         "diff_pair_gap_out_of_range": "error",
@@ -402,7 +405,7 @@
       },
       {
         "netclass": "PowerGround",
-        "pattern": "BAT_CONN"
+        "pattern": "BAT_P"
       },
       {
         "netclass": "PowerGround",
@@ -431,6 +434,10 @@
       {
         "netclass": "Default",
         "pattern": "PAD_5"
+      },
+      {
+        "netclass": "PowerGround",
+        "pattern": "BAT_CONN"
       }
     ]
   },
@@ -441,7 +448,7 @@
       "netlist": "",
       "plot": "",
       "pos_files": "",
-      "specctra_dsn": "../../leftroute.dsn",
+      "specctra_dsn": "../../board.dsn",
       "step": "Left.step",
       "svg": "",
       "vrml": ""

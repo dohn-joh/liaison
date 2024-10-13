@@ -2,6 +2,6 @@
 CONN1,conn_molex_pico_ezmate_1x02,1,,
 "D1, D10, D11, D12, D13, D14, D15, D16, D17, D18, D2, D3, D4, D5, D6, D7, D8, D9",ComboDiode,18,,
 "H1, H2, H3",mounting_hole,3,,
-MCU1,xiao_smd_xl_cutout,1,,
+MCU1,xiao_smd_xl_cutout_minimal,1,,
 S19,SKHLLCA010,1,SKHLLCA010,
-SW1,power_switch,1,,
+SW1,1208YD,1,,

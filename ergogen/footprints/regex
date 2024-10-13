@@ -1,6 +1,6 @@
 ___RUN IN ORDER___
 remove uuid
-%s/(uuid ".*)//g
+%s/(uuid.*")//g
 
 add rotations to lines that already have rotations
 %s/(\(at -\?[0-9.]* -\?[0-9.]*\) \(-\?[0-9.]*\))/(\1 ${\2 + p.rot})/g
