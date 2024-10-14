@@ -58,6 +58,8 @@ units:
   heatset: 3
   # screw hole diameter for case bottom
   scb: 2.45
+  # screwhead diameter
+  sch: 4.5
 
 points:
   zones:
@@ -935,9 +937,13 @@ outlines:
       radius: 2.5/2
       adjust.shift: [2.5, 1.25]
       operation: stack
-    - what: circle
+    - what: circle # screw hole cutouts
       where: /^screw_./
       radius: 0.5scb
+      operation: stack
+    - what: circle # screwhead cutouts
+      where: /^screw_./
+      radius: 0.5sch
       operation: stack
   case_bottom_right: 
     - name: pcb_right
@@ -969,9 +975,13 @@ outlines:
       radius: 2.5/2
       adjust.shift: [2.5, 1.25]
       operation: stack
-    - what: circle
+    - what: circle # screw hole cutouts
       where: /^mirror_screw_./
       radius: 0.5scb
+      operation: stack
+    - what: circle # screwhead cutouts
+      where: /^mirror_screw_./
+      radius: 0.5sch
       operation: stack
 pcbs:
   Left: # name must be capitalized or bugs!
