@@ -1,37 +1,18 @@
-presets:
-  mx_min_spaced:
-    capx: 15.5
-    capy: 15.5
-    capthumbx: 17.8
-    capthumby: 16.5
-    kx: 18 # jcmkk3 uses 16.5. 18 for choc x spacing
-    ky: 16.5
-    kcx: kx # spacing for custom thumb keycaps
-    kcy: ky # spacing for custom thumb keycaps
-    inner_spread: 0.9kx
-    pinky_splay: 5
-    ring_splay: 3
-    thumb_offsetx: 0.75kx
-    switch_xy: 14
-
-  mx_spaced: # y -0.5mm
-    capx: 17.85
-    capy: 18
-    capthumbx: 17.95
-    capthumby: 18.35
-    capleverx: 15.85
-    caplevery: 16.8
-    kx: 19
-    ky: 18.5
-    inner_spread: kx-0.5
-    pinky_splay: 5
-    ring_splay: 2.5
-    thumb_offsetx: 0.25kx
-    switch_xy_mx: 14 # switch hole
-    switch_xy_choc: 13.8
-
 units:
-  $extends: presets.mx_spaced
+  capx: 17.85
+  capy: 18
+  capthumbx: 17.95
+  capthumby: 18.35
+  capleverx: 15.85
+  caplevery: 16.8
+  kx: 19
+  ky: 18.5
+  inner_spread: kx-0.5
+  pinky_splay: 5
+  ring_splay: 2.5
+  thumb_offsetx: 0.25kx
+  switch_xy_mx: 14 # switch hole
+  switch_xy_choc: 13.8
   angle: 22 # was 27.5
   # sf: 19.151 # may want to change this for fab
   sf: 19.151
