@@ -2503,7 +2503,7 @@
 		)
 		(fp_arc
 			(start 1.136553 -8.832047)
-			(mid 1.405961 -8.720454)
+			(mid 1.405958 -8.720453)
 			(end 1.517553 -8.451047)
 			(stroke
 				(width 0.12)
@@ -10028,6 +10028,46 @@
 			)
 			(uuid "a32e1ec1-6aa2-4dd8-9ede-3537967e15cc")
 		)
+	)
+	(gr_line
+		(start 318.16116 111.857809)
+		(end 318.741297 98.570467)
+		(stroke
+			(width 0.15)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "4b99118d-87c3-4402-8d22-bcfc277e6c65")
+	)
+	(gr_line
+		(start 285.891902 110.448903)
+		(end 318.16116 111.857809)
+		(stroke
+			(width 0.15)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "9a8c711a-ec1b-4ae9-a23b-6d37e016581a")
+	)
+	(gr_line
+		(start 286.47204 97.161561)
+		(end 285.891902 110.448903)
+		(stroke
+			(width 0.15)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "bbe822da-0266-4750-b4f6-0c60f285cf28")
+	)
+	(gr_line
+		(start 318.741297 98.570467)
+		(end 286.47204 97.161561)
+		(stroke
+			(width 0.15)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "f717c276-7fe2-4483-babc-28ec5259f045")
 	)
 	(gr_arc
 		(start 224.747353 112.712095)
@@ -20015,6 +20055,12 @@
 				(xy 326.004604 55.550942) (xy 325.996321 55.547542) (xy 325.79529 55.345333) (xy 325.791887 55.33705)
 				(xy 325.794509 55.329702) (xy 326.092143 54.963775) (xy 326.100021 54.95952)
 			)
+		)
+	)
+	(group ""
+		(uuid "3818d662-81df-443d-94eb-71f2ae8583c9")
+		(members "4b99118d-87c3-4402-8d22-bcfc277e6c65" "9a8c711a-ec1b-4ae9-a23b-6d37e016581a"
+			"bbe822da-0266-4750-b4f6-0c60f285cf28" "f717c276-7fe2-4483-babc-28ec5259f045"
 		)
 	)
 )

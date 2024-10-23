@@ -823,9 +823,16 @@ outlines:
       where: ref_mcu
       size: [mcux+2, mcuy+1.5]
       fillet: 1
-  _battery_cutout:
+  battery_cutout_left:
     - what: rectangle
       where: matrix_middle_bottom
+      size: [bcx, bcy]
+      adjust:
+        shift: [-3.61, -20.927]
+        rotate: 2.5
+  battery_cutout_right:
+    - what: rectangle
+      where: mirror_matrix_middle_bottom
       size: [bcx, bcy]
       adjust:
         shift: [-3.61, -20.927]
@@ -855,7 +862,7 @@ outlines:
       size: [9.5, 7]
   case_top_cutouts:
     - name: _mcu_cutout
-    - name: _battery_cutout
+    - name: battery_cutout_left
     - name: _battery_connector_cutout
     - name: _switch_power_cutout
     - name: _switch_reset_cutout
