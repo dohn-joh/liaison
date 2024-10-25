@@ -3,8 +3,8 @@ units:
   capy: 18
   capthumbx: 17.95
   capthumby: 18.35
-  capleverx: 15.85
-  caplevery: 16.8
+  capleverx: 19.12
+  caplevery: 19.32
   kx: 19
   ky: 18.5
   inner_spread: kx-0.5
@@ -288,12 +288,12 @@ outlines:
       adjust.shift: [4, -0.5capy]
     - what: rectangle
       bound: false
-      size: [switch_xy_choc+(2*3.025), switch_xy_choc+(2*3.3)]
+      size: [capleverx+(0.365*2), caplevery+(0.365*2)]
       where: thumb_flexion_cluster
-    - what: rectangle # helpers to fill in gaps
+    - what: rectangle # helpers to fill in gaps above flexion
       bound: false
       where: [thumb_flexion_cluster]
-      size: [switch_xy_choc+(2*3.025)+2, switch_xy_choc+(2*3.3)+10]
+      size: [capleverx+(0.365*2), caplevery+(0.365*2)+10]
       adjust.shift: [2, 5]
   _key_walls_right:
     - what: rectangle
