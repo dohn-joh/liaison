@@ -1148,23 +1148,9 @@ pcbs:
         params:
           drill: scd
           outline: 0.13
-      jlcpcb_order_number_text:
-        what: infused-kim/text
-        where: mirror_ref_jlc_text
-        params:
-          text: JLCJLCJLCJLC
-          reverse: false
-
-
-  # case_bottom: # use to generate HOTSWAP cutouts for bottom case
-  #   outlines:
-  #     main:
-  #       outline: case_bottom
-  #   footprints:
-  #     hotswap_cutouts:
-  #       what: switch_choc_v1_v2 # placeholder. manually replace in kicad
-  #       where: [/matrix/, /thumb/]
-  #       params:
-  #         from: "{{column_net}}"
-  #         to: "{{colrow}}"
-  #         reversible: false
+      # jlcpcb_order_number_text: #jlc has option to let you remove for free now.
+      #   what: infused-kim/text
+      #   where: mirror_ref_jlc_text
+      #   params:
+      #     text: JLCJLCJLCJLC
+      #     reverse: false
