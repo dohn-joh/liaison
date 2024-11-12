@@ -52,17 +52,48 @@ If you are interested in an case for the dongle, check out this [repo](https://g
 ## Firmware
 [Here](https://github.com/dohn-joh/liaison-zmk-module) you can find the source for liaison's ZMK firmware. This firmware is configured for dongle usage, however you may edit the files if you prefer not to use a dongle.
 
+## Step by step build guide
+
+1. **Order the pcb and acquire the case**
+* Download the [left](ergogen/output/pcbs/production/Left_v1.0.0.zip) and [right](ergogen/output/pcbs/production/Right_v1.0.0.zip) pcb files.
+* Order the left and right pcbs from a manufacturer. For example jlcpcb.
+* Acquire the case:
+    * If you own a 3d printer, print the [case](README.md#case-and-tenting).
+    * If you don't own a 3d printer: order the case prints using [these files](README.md#case-and-tenting).
+2. **Order the [parts](README.md#required-parts)**
+3. **Flash and test the microcontrollers**
 > [!IMPORTANT]
 > Flash your microcontrollers with firmware and test them before doing any soldering. Once the microcontrollers are soldered, they will be extremely difficult to remove.
-
-
+* Flash the [firmware](https://github.com/dohn-joh/liaison-zmk-module).
+* Test to make sure that the microcontrollers are working.
+4. **Solder components to top face of pcb**
+* Solder the microcontrollers, diodes, [reset switch](https://github.com/GEIGEIGEIST/TOTEM/blob/main/docs/buildguide.md#reset-switches), power switch, and battery connector to the top face of the pcb.
+* The power button needs to face downward. Trim the power switch legs to size before installing. Secure the power switch with kapton tape after soldering.
+* Trim the reset switch legs as needed after soldering.
+5. Use a multimeter to check that your connections are good. Fix any that are not good.
+6. **Solder components to bottom face of pcb**
+> [!IMPORTANT]
+> Hotswap socket orientation matters. The sockets must align with the silkscreen or the bottom case will not fit.
+* Solder the hotswap sockets to the bottom face of the pcb.
+7. **Battery installation**
+* Connect the battery to the connector.
+* Use kapton tape to secure the battery to the pcb within the silkscreen outline.
+8. **Case assembly**
+* With your soldering iron set to 300C, push the heatset inserts into the 4 holes in the top case.
+* Insert the fully assembled pcb.
+* Attach the bottom case and secure it in place with the M2 screws.
+* Cut silicone sheet to size and adhere to the corners of the bottom case.
+9. **Tenting assembly**
+* Screw the magsafe pucks onto the tenting legs.
+* Adhere magsafe ring to bottom case.
+* Cut silicone sheet to size and adhere to bottom of tenting legs.
 
 ***
 
 # Photos
 
-![2](photos/2.jpg)
 ![3](photos/3.jpg)
+![2](photos/2.jpg)
 ![4](photos/4.jpg)
 ![5](photos/5.jpg)
 ![6](photos/6.png)
