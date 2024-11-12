@@ -9,7 +9,7 @@
 
 ***
 
-# Build Guide
+# Components
 
 ## Case and Tenting
 [Here](case) you can find the models for the case and magsafe tenting legs.
@@ -21,12 +21,11 @@ Print 1 of each of the following:
 * [bottom right](case/case_bottom_right.step)
 
 If you are interested in magnetic tenting legs, you can print 2 of [these](case/magsafe_tenting_leg).
-
-If you are interested in an case for the dongle, check out this [repo](https://github.com/dohn-joh/dongle-zmk).
+If you are interested in a case for the dongle, check out this [repo](https://github.com/dohn-joh/dongle-zmk).
 
 ## Required parts
 |Part|Quantity|Link|
-|-|-|-|
+|-|:-:|-|
 |Microcontroller: Xiao nRF52840|1|https://www.seeedstudio.com/Seeed-XIAO-BLE-nRF52840-p-5201.html|
 |Battery: 301230 with molex pico ezmate connector|1|Select L0040. https://www.aliexpress.us/item/3256802674181210.html|
 |Battery connector: molex pico ezmate 1x02|1|Select 2P. https://www.aliexpress.us/item/3256805726980487.html|
@@ -43,7 +42,7 @@ If you are interested in an case for the dongle, check out this [repo](https://g
 
 ## Optional parts for tenting and USB
 |Part|Quantity|Link|
-|-|-|-|
+|-|:-:|-|
 |Magsafe puck: Vrig MG-01|2|https://www.aliexpress.us/item/3256804940825578.html|
 |Magsafe rings|2|https://www.aliexpress.us/item/3256805759445725.html|
 |1/4" thread screw ~9mm|2|There are cheaper sources out there, but here is a link: https://www.amazon.com/dp/B01MS60KSY|
@@ -52,7 +51,7 @@ If you are interested in an case for the dongle, check out this [repo](https://g
 ## Firmware
 [Here](https://github.com/dohn-joh/liaison-zmk-module) you can find the source for liaison's ZMK firmware. This firmware is configured for dongle usage, however you may edit the files if you prefer not to use a dongle.
 
-## Step by step build guide
+# Build Guide
 
 1. **Order the pcb and acquire the case**
 * Download the [left](ergogen/output/pcbs/production/Left_v1.0.0.zip) and [right](ergogen/output/pcbs/production/Right_v1.0.0.zip) pcb files.
