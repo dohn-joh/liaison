@@ -1,7 +1,7 @@
 ![cover_photo](photos/1.jpg)
 
 # Liaison
-`Liaison` is a 36-key split keyboard that leverages custom keycaps, splay, and tenting for ergonomics.
+`Liaison` is a wireless 36-key split keyboard that leverages custom keycaps, splay, and tenting for ergonomics.
 
 **Video showcase**:  
 [Fit and layout](https://vimeo.com/1022366207)  
@@ -10,6 +10,19 @@
 ***
 
 # Build Guide
+
+## Case and Tenting
+[Here](case) you can find the models for the case and magsafe tenting legs.
+
+Print 1 of each of the following:
+* [top left](case/case_top_left.step)
+* [top right](case/case_top_right.step)
+* [bottom left](case/case_bottom_left.step)
+* [bottom right](case/case_bottom_right.step)
+
+If you are interested in magnetic tenting legs, you can print 2 of [these](case/magsafe_tenting_leg).
+
+If you are interested in an case for the dongle, check out this [repo](https://github.com/dohn-joh/dongle-zmk).
 
 ## Required parts
 |Part|Quantity|Link|
@@ -33,7 +46,16 @@
 |-|-|-|
 |Magsafe puck: Vrig MG-01|2|https://www.aliexpress.us/item/3256804940825578.html|
 |Magsafe rings|2|https://www.aliexpress.us/item/3256805759445725.html|
+|1/4" thread screw ~9mm|2|There are cheaper sources out there, but here is a link: https://www.amazon.com/dp/B01MS60KSY|
 |Magnetic USB connector: Netdot Gen10|2|https://www.amazon.com/dp/B07MBD3FZD|
+
+## Firmware
+[Here](https://github.com/dohn-joh/liaison-zmk-module) you can find the source for liaison's ZMK firmware. This firmware is configured for dongle usage, however you may edit the files if you prefer not to use a dongle.
+
+> [!IMPORTANT]
+> Flash your microcontrollers with firmware and test them before doing any soldering. Once the microcontrollers are soldered, they will be extremely difficult to remove.
+
+
 
 ***
 
@@ -43,8 +65,8 @@
 ![3](photos/3.jpg)
 ![4](photos/4.jpg)
 ![5](photos/5.jpg)
-![6](photos/6.jpg)
-![exp](photos/exp.jpg)
+![6](photos/6.png)
+![exp](photos/exp.png)
 
 ***
 
