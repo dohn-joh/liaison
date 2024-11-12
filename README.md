@@ -1,4 +1,4 @@
-[cover_photo](photos/1.jpg)
+![cover_photo](photos/1.jpg)
 
 # Liaison
 `Liaison` is a 36-key split keyboard that leverages custom keycaps, splay, and tenting for ergonomics.
@@ -39,12 +39,12 @@
 
 # Photos
 
-[2](photos/2.jpg)
-[3](photos/3.jpg)
-[4](photos/4.jpg)
-[5](photos/5.jpg)
-[6](photos/6.jpg)
-[exp](photos/exp.jpg)
+![2](photos/2.jpg)
+![3](photos/3.jpg)
+![4](photos/4.jpg)
+![5](photos/5.jpg)
+![6](photos/6.jpg)
+![exp](photos/exp.jpg)
 
 ***
 
