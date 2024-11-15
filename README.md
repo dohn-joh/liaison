@@ -19,8 +19,8 @@ Print 1 of each of the following:
 * [bottom left](case/case_bottom_left.step)
 * [bottom right](case/case_bottom_right.step)
 
-Want tenting legs? Print 2 of [these](case/magsafe_tenting_leg).  
-Need a case for your dongle? Check out this [repo](https://github.com/dohn-joh/dongle-zmk).
+[Tenting legs](case/magsafe_tenting_leg) (optional)
+[Dongle case](https://github.com/dohn-joh/dongle-zmk) (optional)
 
 ## Required Parts
 |Part|Quantity|Link|
@@ -48,13 +48,13 @@ Need a case for your dongle? Check out this [repo](https://github.com/dohn-joh/d
 |Magnetic USB connector/cable: Netdot Gen10|2|https://www.amazon.com/dp/B07MBD3FZD|
 
 ## Firmware
-[Here](https://github.com/dohn-joh/liaison-zmk-module) you can find the liaison's ZMK module. The firmware is configured for dongle usage, however you may edit the files if you prefer to not use a dongle.
+[Here](https://github.com/dohn-joh/liaison-zmk-module) you can find the liaison's ZMK module. The firmware is configured for dongle usage, however you may fork the repo if you prefer to not use a dongle.
 
 # Build Guide
 
 **1. Order the pcb and acquire the case**
-* Download the [left](ergogen/output/pcbs/production/Left_v1.0.0.zip) and [right](ergogen/output/pcbs/production/Right_v1.0.0.zip) zips.
-* Upload the zips to your pcb manufacturer of choice, then place an order. I used jlcpcb.
+* Download the [left](ergogen/output/pcbs/production/Left_v1.0.0.zip) and [right](ergogen/output/pcbs/production/Right_v1.0.0.zip) pcb zip files.
+* Upload the zip files to your pcb manufacturer of choice, then place an order. I used jlcpcb.
 * Acquire the case:
     * If you own a 3d printer: print the [case](README.md#case-and-tenting).
     * If you don't own a 3d printer: order the case prints using [these files](README.md#case-and-tenting).
@@ -72,18 +72,18 @@ Need a case for your dongle? Check out this [repo](https://github.com/dohn-joh/d
 * Solder the microcontrollers, diodes, [reset switch](https://github.com/GEIGEIGEIST/TOTEM/blob/main/docs/buildguide.md#reset-switches), power switch, and battery connector to the top face of the pcb.
 * The battery connector can be tricky to solder. But once you get the hang of it, it's pretty easy. Here are some tips from Kim:
     > Apply flux on both the pcb pads and battery connector pins
-    Tin both corner pads with solder
-    Solder connector to the first corner by applying heat to the corner metal pin from above
-    Then do the same for the second corner
-    Apply more flux to connector pins and PCB pads
-    Apply solder to underside of soldering tip
-    Drag iron from side to side over the contacts until they are soldered. The solder will just jump to where it needs to go
-    Make sure to clean the flux thoroughly
+    > Tin both corner pads with solder
+    > Solder connector to the first corner by applying heat to the corner metal pin from above
+    > Then do the same for the second corner
+    > Apply more flux to connector pins and PCB pads
+    > Apply solder to underside of soldering tip
+    > Drag iron from side to side over the contacts until they are soldered. The solder will just jump to where it needs to go
+    > Make sure to clean the flux thoroughly
 * The power button needs to face downward. Trim the power switch legs to size before installing. Secure the power switch in place with kapton tape after soldering.
 
 **5. Check your work**
-* This step is optional, but I like to check my work before moving onto the other side of the pcb.
-* Make sure all diodes are oriented correctly. All arrows should be pointing left.
+* This step is optional, but I like to check my work before moving on to soldering the other side of the pcb.
+* Make sure all diodes are oriented correctly. All lines or arrows should be pointing left.
 * Set your multimeter to continuity mode.
 * Check connections and look for bridging.
 * Fix any solder joints as needed.
