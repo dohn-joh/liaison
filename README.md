@@ -19,7 +19,7 @@ Print 1 of each of the following:
 * [bottom left](case/case_bottom_left.step)
 * [bottom right](case/case_bottom_right.step)
 
-[Tenting legs](case/magsafe_tenting_leg) (optional)
+[Tenting legs](case/magsafe_tenting_leg) (optional)  
 [Dongle case](https://github.com/dohn-joh/dongle-zmk) (optional)
 
 ## Required Parts
