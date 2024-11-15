@@ -71,14 +71,14 @@ Print 1 of each of the following:
 * Set your soldering iron to 350C.
 * Solder the microcontrollers, diodes, [reset switch](https://github.com/GEIGEIGEIST/TOTEM/blob/main/docs/buildguide.md#reset-switches), power switch, and battery connector to the top face of the pcb.
 * The battery connector can be tricky to solder. But once you get the hang of it, it's pretty easy. Here are some tips from Kim:
-    > Apply flux on both the pcb pads and battery connector pins
-    > Tin both corner pads with solder
-    > Solder connector to the first corner by applying heat to the corner metal pin from above
-    > Then do the same for the second corner
-    > Apply more flux to connector pins and PCB pads
-    > Apply solder to underside of soldering tip
-    > Drag iron from side to side over the contacts until they are soldered. The solder will just jump to where it needs to go
-    > Make sure to clean the flux thoroughly
+    > Apply flux on both the pcb pads and battery connector pins  
+    Tin both corner pads with solder  
+    Solder connector to the first corner by applying heat to the corner metal pin from above  
+    Then do the same for the second corner  
+    Apply more flux to connector pins and PCB pads  
+    Apply solder to underside of soldering tip  
+    Drag iron from side to side over the contacts until they are soldered. The solder will just jump to where it needs to go  
+    Make sure to clean the flux thoroughly
 * The power button needs to face downward. Trim the power switch legs to size before installing. Secure the power switch in place with kapton tape after soldering.
 
 **5. Check your work**
